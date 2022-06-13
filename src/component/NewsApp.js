@@ -1,20 +1,26 @@
-import React,{useState} from "react";
+import React,{useState,useEffect} from "react";
 import axios from 'axios';
 
 const NewsApp=()=> {
     const [data,setData]=useState([]);
-      const ClickHandeler=()=>{
+    //   const ClickHandeler=()=>{
+         useEffect(()=>{
+
+        
           axios.get("https://newsapi.org/v2/everything?q=bitcoin&apiKey=51268276f0a941188b935d127587c18b")  
           .then((res)=>{
               console.log(res);
               setData(res.data.articles);
           })
-      }
+
+        },[])
+          
+    //   }
     return(
         <>
-           <div className='container ' style={{textAlign:"center"}}>
+           {/* <div className='container ' style={{textAlign:"center"}}>
                <button className='btn btn-primary' onClick={ClickHandeler} style={{fontSize:"40px"}}>Fetch News</button>
-           </div>
+           </div> */}
            <div className='continer'>
                <div className='row'>
                   {
